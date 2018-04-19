@@ -8,12 +8,14 @@ import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.github.skomaromi.tasky.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import butterknife.OnTextChanged;
 
 public class TaskAddActivity extends AppCompatActivity {
     @BindView(R.id.etAddTaskTitle) EditText etAddTaskTitle;
@@ -34,6 +36,7 @@ public class TaskAddActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        btnAddTaskOK.setEnabled(false);
     }
 
     @Override
@@ -46,8 +49,27 @@ public class TaskAddActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    @OnTextChanged(R.id.etAddTaskTitle)
+    public void etAddTaskTitle_Changed() {
+        textFieldsChanged();
+    }
+
+    @OnTextChanged(R.id.etAddTaskDescription)
+    public void etAddTaskDescription_Changed() {
+        textFieldsChanged();
+    }
+
+    public void textFieldsChanged() {
+        String title, description;
+
+        title = etAddTaskTitle.getText().toString();
+        description = etAddTaskDescription.getText().toString();
+
+        btnAddTaskOK.setEnabled(title.length() + description.length() > 0);
+    }
+
     @OnClick(R.id.btnAddTaskOK)
-    public void closeAndReturnData() {
+    public void btnAddTaskOK_onClick() {
         String title, description, priority;
 
         title = etAddTaskTitle.getText().toString();
