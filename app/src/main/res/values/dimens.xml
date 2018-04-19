@@ -4,4 +4,5 @@
     <dimen name="global_minspace">16dp</dimen>
     <dimen name="item_title_size">20sp</dimen>
     <dimen name="item_height">100dp</dimen>
+    <dimen name="global_spacebottom">8dp</dimen>
 </resources>

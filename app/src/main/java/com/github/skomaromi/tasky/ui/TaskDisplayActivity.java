@@ -1,7 +1,9 @@
 package com.github.skomaromi.tasky.ui;
 
+import android.app.Activity;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -80,10 +82,23 @@ public class TaskDisplayActivity extends AppCompatActivity {
 
     @OnClick(R.id.fabAddTask)
     public void addTask() {
-        Random r = new Random();
-        int i1 = r.nextInt(80 - 65) + 65;
+        Intent taskAddActivity = new Intent(this, TaskAddActivity.class);
+        startActivityForResult(taskAddActivity, 1);
+    }
 
-        Task task = new Task("Reminder " + i1, "Note descriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescriptiondescription", "medium");
-        mTaskListViewModel.insertTask(task);
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == 1) {
+            if (resultCode == Activity.RESULT_OK) {
+                String title, description, priority;
+
+                title = data.getStringExtra(TaskAddActivity.KEY_TITLE);
+                description = data.getStringExtra(TaskAddActivity.KEY_DESC);
+                priority = data.getStringExtra(TaskAddActivity.KEY_PRIORITY);
+
+                Task task = new Task(title, description, priority);
+                mTaskListViewModel.insertTask(task);
+            }
+        }
     }
 }

@@ -7,26 +7,32 @@
     tools:context=".ui.TaskAddActivity"
     android:layout_margin="@dimen/global_minspace">
 
-    <TextView
-        android:id="@+id/tvAddTaskTitle"
+    <EditText
+        android:id="@+id/etAddTaskTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Title"
-        android:padding="@dimen/global_minspace"/>
-    <TextView
-        android:id="@+id/tvAddTaskDescription"
+        android:hint="@string/addtask_title"/>
+    <EditText
+        android:id="@+id/etAddTaskDescription"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Description"
-        android:padding="@dimen/global_minspace"
-        app:layout_constraintTop_toBottomOf="@id/tvAddTaskTitle"/>
+        android:hint="@string/addtask_description"
+        app:layout_constraintTop_toBottomOf="@id/etAddTaskTitle"/>
+    <Spinner
+        android:id="@+id/sAddTaskPriority"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/priority_types"
+        android:paddingTop="@dimen/global_minspace"
+        android:paddingBottom="@dimen/global_spacebottom"
+        app:layout_constraintTop_toBottomOf="@id/etAddTaskDescription"/>
 
     <Button
         android:id="@+id/btnAddTaskOK"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="OK"
-        app:layout_constraintTop_toBottomOf="@id/tvAddTaskDescription"
+        android:text="@string/addtask_okbutton"
+        app:layout_constraintTop_toBottomOf="@id/sAddTaskPriority"
         app:layout_constraintLeft_toRightOf="parent"
         app:layout_constraintRight_toLeftOf="parent"/>
 
