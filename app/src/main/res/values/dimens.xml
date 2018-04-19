@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="item_priorityribbon_width">10dp</dimen>
-    <dimen name="global_margin">16dp</dimen>
+    <dimen name="global_minspace">16dp</dimen>
     <dimen name="item_title_size">20sp</dimen>
+    <dimen name="item_height">100dp</dimen>
 </resources>

@@ -2,32 +2,36 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="@dimen/item_height"
+    android:paddingEnd="@dimen/global_minspace">
 
     <ImageView
         android:id="@+id/ivPriorityRibbon"
         android:background="@color/priorityLow"
         android:layout_width="@dimen/item_priorityribbon_width"
-        android:layout_height="match_parent"/>
+        android:layout_height="@dimen/item_height"
+        android:layout_marginEnd="@dimen/global_minspace"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/ivPriorityRibbon"
-        android:orientation="vertical"
-        android:layout_margin="@dimen/global_margin">
         <TextView
             android:id="@+id/tvTaskTitle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/global_minspace"
             android:textSize="@dimen/item_title_size"
-            android:text="Make Tasky work"/>
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:layout_toRightOf="@id/ivPriorityRibbon"
+            android:text="Make Tasky work"
+            />
         <TextView
             android:id="@+id/tvTaskDescription"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Don't forget to make this really work"/>
-    </LinearLayout>
+            android:maxLines="3"
+            android:ellipsize="end"
 
+            android:layout_toEndOf="@id/ivPriorityRibbon"
+            android:layout_below="@id/tvTaskTitle"
+            android:text="Don't forget to make this really work"/>
 
 </RelativeLayout>
